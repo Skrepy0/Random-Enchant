@@ -1,0 +1,26 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "random-enchant:item/curry_stick"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "damage": 0.1
+      },
+      "model": "random-enchant:item/curry_stick_1"
+    },
+    {
+      "predicate": {
+        "damage": 0.5
+      },
+      "model": "random-enchant:item/curry_stick_2"
+    },
+    {
+      "predicate": {
+        "damage": 0.7
+      },
+      "model": "random-enchant:item/curry_stick_3"
+    }
+  ]
+}
