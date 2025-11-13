@@ -5,11 +5,11 @@
 	"name": "Random Enchant",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"Skrepy2233"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Skrepy0/Random-Enchant"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/random-enchant/icon.png",
