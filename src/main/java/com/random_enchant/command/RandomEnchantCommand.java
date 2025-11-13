@@ -45,10 +45,10 @@ public class RandomEnchantCommand {
                                 Text discription_2 = Text.of("1.可以使用/§arandom_enchant isRandomEnchant §b<true/false>§r 进行配置，默认是开启");
                                 Text discription_3 = Text.of("2.§aisRandomEnchant§r开启后,玩家击打有生命实体后会对玩家主手物品进行随机附魔（等级也是随机）");
                                 Text discription_4 = Text.of("3.已经启用本mod自带的材质包（修复§b附魔等级的罗马数字显示§r）");
-                                Text discription_5 = Text.of("4.最重要的一点，附魔随机的范围是§d原版附魔§r（技术原因）");
+                                Text discription_5 = Text.of("4.最重要的一点，附魔随机的范围是§d原版附魔以及本Mod自带附魔§r（技术原因）");
                                 Text discription_6 = Text.of("5.本mod对原版附魔添加了一些效果，如附魔有§a[无限]§r的食物使用后数量不会减少，方块、不死图腾亦同");
-                                Text discription_7 = Text.of("最后，添加的附魔与对应的物品：\n §a[无限]§r投掷类物品，如坤蛋、末影珍珠、药水（饮用除外）、食物（蛋糕除外）等;各种方块、不死图腾\n §a[力量]§r 火焰弹、铲子、粘液球");
-                                Text discription = Text.of("§c最后§r:按§d[T]§r查看全部\n§b张舒程§r好帅~~");
+                                Text discription_7 = Text.of("最后，添加的附魔与对应的物品：\n §a[无限]§r投掷类物品，如鸡蛋、末影珍珠、药水（饮用除外）、食物（蛋糕除外）等;各种方块、不死图腾\n §a[力量]§r 火焰弹、铲子、粘液球");
+                                Text discription = Text.of("§c最后§r:按§d[T]§r查看全部");
                                 ArrayList<Text> message = new ArrayList<>();
                                 message.add(discription_1);
                                 message.add(discription_2);
