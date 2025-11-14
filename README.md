@@ -10,7 +10,7 @@ Make sure your Minecraft version is `1.21.1`.
 - Use the command /random_enchant isRandomEnchant true to enable the Random Enchant feature.
 
 # credits
-Mahiru    `Ragecraft IV`
+Mahiru  、  `Ragecraft IV`
 
 >Attention:
 The texture part of this mod is derived from `Ragecraft IV`.
