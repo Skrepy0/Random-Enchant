@@ -2,11 +2,13 @@ package com.random_enchant;
 
 import com.random_enchant.command.ModCommands;
 import com.random_enchant.enchantment.ModEnchantmentEffect;
+import com.random_enchant.enchantment.ModEnchantmentTags;
 import com.random_enchant.entity.ModEntities;
 import com.random_enchant.event.AttackMobEvent;
 import com.random_enchant.event.ModEvents;
 import com.random_enchant.item.ModItemGroup;
 import com.random_enchant.item.ModItemModelProperties;
+import com.random_enchant.item.ModItemTags;
 import com.random_enchant.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -33,7 +35,9 @@ public class RandomEnchant implements ModInitializer {
 		ModEntities.registerModEntities();
 
         ModItems.registerModItems();
+        ModItemTags.registerModItemTags();
         ModEnchantmentEffect.registerModEnchantmentEffects();
+        ModEnchantmentTags.registerModItemTags();
         ModItemGroup.registerModGroups();
         AttackMobEvent.registerAttackMobEvents();
 

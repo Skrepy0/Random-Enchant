@@ -57,8 +57,8 @@ public class ModZHCNLanProvider extends FabricLanguageProvider {
 
 
         translationBuilder.add("item.tooltip.random-enchant.for_shift_tooltip", "按下§6[SHIFT]§r查看详细信息");
-        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_1", "§5左键攻击实体并瞬移，右键瞬移§r");
-        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_2", "§5瞬移路径上的实体会受到8点基础伤害§r");
-        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_3", "§5左键攻击时与目标的相对速度越大，伤害越高§r");
+        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_1", "§b左键攻击实体并瞬移，右键瞬移§r");
+        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_2", "§b瞬移路径上的实体会受到8点基础伤害(实际伤害与§a[横扫之刃]§b等级有关)§r");
+        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_3", "§b左键攻击时与目标的相对速度越大，伤害越高§r");
     }
 }

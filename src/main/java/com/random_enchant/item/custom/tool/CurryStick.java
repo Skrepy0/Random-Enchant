@@ -85,9 +85,8 @@ public class CurryStick extends Item {
             int infinityLevel = getEnchantmentLevel(stack, world, Enchantments.INFINITY);
             if (infinityLevel == 0) {
                 int unbreakingLevel = getEnchantmentLevel(stack, world, Enchantments.UNBREAKING);
-                stack.damage(unbreakingLevel, user, LivingEntity.getSlotForHand(user.getActiveHand()));
+                stack.damage(getItemDamage(unbreakingLevel), user, LivingEntity.getSlotForHand(user.getActiveHand()));
             }
-
             return stack;
         } else {
             return null;
@@ -132,5 +131,9 @@ public class CurryStick extends Item {
                         .getEntry(enchantment).orElse(null);
         return enchantmentEntry != null ?
                 EnchantmentHelper.getLevel(enchantmentEntry, stack) : 0;
+    }
+    @Override
+    public int getEnchantability() {
+        return 8;
     }
 }

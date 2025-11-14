@@ -57,8 +57,8 @@ public class ModENUSLanProvider extends FabricLanguageProvider{
         translationBuilder.add("entity.minecraft.bee.spawn_name","§aFly");
 
         translationBuilder.add("item.tooltip.random-enchant.for_shift_tooltip","Press §6[SHIFT]§r show detail information");
-        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_1","§5Left-click to attack the entity and teleport, right-click to teleport§r");
-        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_2","§5Entities in the teleportation path take 8 base damage§r");
-        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_3","§5The greater the relative speed to the target when left-clicking to attack,the higher the damage§r");
+        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_1","§bLeft-click to attack the entity and teleport, right-click to teleport§r");
+        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_2","§bEntities in the teleportation path take 8 base damage(real damage is related to the level of §a[Sweep Edge]§b)§r");
+        translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_3","§bThe greater the relative speed to the target when left-clicking to attack,the higher the damage§r");
     }
 }

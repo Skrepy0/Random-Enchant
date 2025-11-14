@@ -109,7 +109,7 @@ public class PearlSpear extends Item {
         ItemStack stack = user.getStackInHand(hand);
         if (world.isClient()) return TypedActionResult.pass(stack);
         if (user.getItemCooldownManager().isCoolingDown(this)) return TypedActionResult.pass(stack);
-        teleportUser(10, user, world, false);
+        teleportUser(stack,10, user, world, false);
         if (!user.getAbilities().creativeMode) {
             int unbreakingLevel = getEnchantmentLevel(stack,world,Enchantments.UNBREAKING);
             stack.damage(getItemDamage(unbreakingLevel), user, LivingEntity.getSlotForHand(hand));
@@ -143,7 +143,7 @@ public class PearlSpear extends Item {
         float damage = (float) (dV * 10 + 9);
 //        System.out.println("damage="+damage);
         stack.damage(1, attacker, EquipmentSlot.MAINHAND);
-        teleportUser(10, user, world, true);
+        teleportUser(stack,10, user, world, true);
         int channelingLevel = getEnchantmentLevel(stack,world,Enchantments.CHANNELING);
         if (channelingLevel > 0){
             spawnLightningEntity(channelingLevel,world,entity);
@@ -222,10 +222,10 @@ public class PearlSpear extends Item {
             }
         }
     }
-    private void damageEntitiesNearTrack(World world, Vec3d startPos, Vec3d endPos, PlayerEntity player) {
+    private void damageEntitiesNearTrack(World world, Vec3d startPos, Vec3d endPos, PlayerEntity player,int sweepingEdgeLevel) {
         final double DAMAGE_RADIUS = 3.0;
         final double SEARCH_RADIUS = 20.0;
-        final float DAMAGE_AMOUNT = 8.0f; // 调整伤害值
+        final float DAMAGE_AMOUNT = 8.0f+sweepingEdgeLevel; // 调整伤害值
 
         // 获取玩家周围20格范围内的所有生物
         Box searchBox = new Box(
@@ -244,7 +244,7 @@ public class PearlSpear extends Item {
                 // 对生物造成伤害
                 entity.damage(player.getDamageSources().playerAttack(player), DAMAGE_AMOUNT);
 
-                // 可选：添加受伤效果
+                // 添加受伤效果
                 if (!world.isClient) {
                     ((ServerWorld) world).spawnParticles(
                             ParticleTypes.DAMAGE_INDICATOR,
@@ -296,7 +296,7 @@ public class PearlSpear extends Item {
         return point.distanceTo(closestPoint);
     }
 
-    private void teleportUser(float distance, PlayerEntity player, World world, boolean isPlane) {
+    private void teleportUser(ItemStack stack,float distance, PlayerEntity player, World world, boolean isPlane) {
         float spawnDistance = distance;
         final float DEGREES_TO_RADIANS = 0.017453292F;
 
@@ -321,7 +321,8 @@ public class PearlSpear extends Item {
                 // 传送玩家
                 showTrack(world, player.getPos(), new Vec3d(tpX, tpY, tpZ));
                 // 对轨迹附近的生物造成伤害
-                damageEntitiesNearTrack(world, player.getPos(), new Vec3d(tpX, tpY, tpZ), player);
+                int sweepingEdgeLevel = getEnchantmentLevel(stack,world,Enchantments.SWEEPING_EDGE);
+                damageEntitiesNearTrack(world, player.getPos(), new Vec3d(tpX, tpY, tpZ), player,sweepingEdgeLevel);
                 player.teleport((ServerWorld) world, tpX, tpY, tpZ,
                         EnumSet.noneOf(PositionFlag.class),
                         MathHelper.wrapDegrees(player.getYaw()),
@@ -563,5 +564,9 @@ public class PearlSpear extends Item {
                 );
             }
         }
+    }
+    @Override
+    public int getEnchantability() {
+        return 10;
     }
 }

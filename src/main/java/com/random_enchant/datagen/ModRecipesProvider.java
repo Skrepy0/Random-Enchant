@@ -57,5 +57,25 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('#', ModItems.FIRE_ITEM)
                 .criterion("has_item", RecipeProvider.conditionsFromItem(ModItems.FIRE_ITEM))
                 .offerTo(exporter, Identifier.of(RandomEnchant.MOD_ID, "m_pearl"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT,ModItems.PEARL_SPEAR,1)
+                .pattern(" ##")
+                .pattern(" %#")
+                .pattern("@  ")
+                .input('#',Items.AMETHYST_SHARD)
+                .input('%',ModItems.PEARL_STICK)
+                .input('@',Items.BREEZE_ROD)
+                .criterion("has_item",RecipeProvider.conditionsFromItem(Items.AMETHYST_SHARD))
+                .offerTo(exporter,Identifier.of(RandomEnchant.MOD_ID,"pearl_spear"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT,ModItems.PEARL_STICK,1)
+                .pattern(" ##")
+                .pattern(" %#")
+                .pattern("@  ")
+                .input('#',Items.AMETHYST_SHARD)
+                .input('%',Items.ENDER_PEARL)
+                .input('@',Items.BLAZE_ROD)
+                .criterion("has_item",RecipeProvider.conditionsFromItem(Items.BREEZE_ROD))
+                .offerTo(exporter,Identifier.of(RandomEnchant.MOD_ID,"pearl_stick"));
+
     }
 }

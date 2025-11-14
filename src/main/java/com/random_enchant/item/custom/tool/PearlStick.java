@@ -70,4 +70,8 @@ public class PearlStick extends Item {
             stack.damage(1, player, LivingEntity.getSlotForHand(hand));
         }
     }
+    @Override
+    public int getEnchantability() {
+        return 10;
+    }
 }

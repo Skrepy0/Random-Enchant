@@ -16,7 +16,10 @@ public class RandomEnchantDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModENUSLanProvider::new);
 		pack.addProvider(ModModelsProvider::new);
 		pack.addProvider(ModRecipesProvider::new);
+		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModDynamicRegistryProvider::new);
+		pack.addProvider(ModEnchantmentTagProvider::new);
+
 
 	}
 	@Override

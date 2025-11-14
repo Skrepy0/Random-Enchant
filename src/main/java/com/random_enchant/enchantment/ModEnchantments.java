@@ -1,6 +1,7 @@
 package com.random_enchant.enchantment;
 
 import com.random_enchant.RandomEnchant;
+import com.random_enchant.item.ModItemTags;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -17,8 +18,8 @@ public class ModEnchantments {
         RegistryEntryLookup<Enchantment> registryEntryLookup2 = registry.getRegistryLookup(RegistryKeys.ENCHANTMENT);
         RegistryEntryLookup<Item> registryEntryLookup3 = registry.getRegistryLookup(RegistryKeys.ITEM);
         register(registry,FURY_OF_FLY,Enchantment.builder(Enchantment.definition(
-                registryEntryLookup3.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                6,5,
+                registryEntryLookup3.getOrThrow(ModItemTags.FURY_OF_FLY_AVAILABLE),
+                3,5,
                 Enchantment.leveledCost(10,5),
                 Enchantment.leveledCost(27,10),5,
                 AttributeModifierSlot.MAINHAND

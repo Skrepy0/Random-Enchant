@@ -1,11 +1,15 @@
-// 1.21.1	2025-11-12T23:52:48.6993316	Random Enchant/Recipes
-209527abae36fea8239a69e6bb1a7eac14b005bf data\random-enchant\advancement\recipes\combat\fire_chainmail_boots.json
-74350ddb9acedda7557bea53011c4cc97834ab7b data\random-enchant\recipe\fire_chainmail_boots.json
-b06291eeb0513b5d5eb7992557fc8e8816fed852 data\random-enchant\advancement\recipes\combat\fire_chainmail_leggings.json
-83b8d8bc3b332d232746ba1cb1e5236544b6eea4 data\random-enchant\recipe\m_pearl.json
+// 1.21.1	2025-11-14T19:34:30.044291	Random Enchant/Recipes
+3d3d6b0090ddcb855d086d5a3711fb9d2ecd7dab data\random-enchant\recipe\pearl_spear.json
 af8bcc901692f92a93699c8475cf490ceb8a02b6 data\random-enchant\advancement\recipes\combat\m_pearl.json
-6097474a14d4157c2fd0f135f637d2c7b3deebfd data\random-enchant\advancement\recipes\combat\fire_chainmail_helmet.json
-22ebe455b1d7c03adf1c55e082359d6428309d7c data\random-enchant\recipe\fire_chainmail_leggings.json
+484a07fc0c71c59d89d3046ce9456fd6576e8683 data\random-enchant\recipe\pearl_stick.json
 aaed363ae3c7cba7fcf1471f243d834438fef464 data\random-enchant\recipe\fire_chainmail_chestplate.json
 8545befcecad5566ef7e5c15aaf2859c01c0347b data\random-enchant\recipe\fire_chainmail_helmet.json
+7d322f349ba22e3fda3cf1f19d2d60b93cd4695f data\random-enchant\advancement\recipes\combat\pearl_spear.json
+209527abae36fea8239a69e6bb1a7eac14b005bf data\random-enchant\advancement\recipes\combat\fire_chainmail_boots.json
+74350ddb9acedda7557bea53011c4cc97834ab7b data\random-enchant\recipe\fire_chainmail_boots.json
+83b8d8bc3b332d232746ba1cb1e5236544b6eea4 data\random-enchant\recipe\m_pearl.json
+b06291eeb0513b5d5eb7992557fc8e8816fed852 data\random-enchant\advancement\recipes\combat\fire_chainmail_leggings.json
+d802b1ac5e82e4ad428332748f4fd4ee8219bd0e data\random-enchant\advancement\recipes\combat\pearl_stick.json
+6097474a14d4157c2fd0f135f637d2c7b3deebfd data\random-enchant\advancement\recipes\combat\fire_chainmail_helmet.json
+22ebe455b1d7c03adf1c55e082359d6428309d7c data\random-enchant\recipe\fire_chainmail_leggings.json
 91137c0cb7470ba4899d80c6fee79889615690eb data\random-enchant\advancement\recipes\combat\fire_chainmail_chestplate.json

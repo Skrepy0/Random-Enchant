@@ -15,6 +15,6 @@
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:enchantable/weapon",
-  "weight": 6
+  "supported_items": "#random-enchant:fury_of_fly_available",
+  "weight": 3
 }
