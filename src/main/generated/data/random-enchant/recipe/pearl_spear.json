@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "%": {
+      "item": "random-enchant:pearl_stick"
+    },
+    "@": {
+      "item": "minecraft:breeze_rod"
+    }
+  },
+  "pattern": [
+    " ##",
+    " %#",
+    "@  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "random-enchant:pearl_spear"
+  }
+}
