@@ -36,7 +36,7 @@ public class ThrowItemEvent implements UseItemCallback {
         Item item = stack.getItem();
 
         if (!(item == Items.ENDER_PEARL||item == Items.WIND_CHARGE||item == Items.EGG||item == Items.ENDER_EYE||item == Items.SNOWBALL||
-                (item == Items.FIRE_CHARGE&&getEnchantmentLevel(player,hand,world,Enchantments.POWER)>0))) {
+              item == Items.FIREWORK_ROCKET || (item == Items.FIRE_CHARGE&&getEnchantmentLevel(player,hand,world,Enchantments.POWER)>0))) {
             return TypedActionResult.pass(stack);
         }
 
@@ -49,6 +49,10 @@ public class ThrowItemEvent implements UseItemCallback {
         if (item == Items.FIRE_CHARGE && player.getItemCooldownManager().isCoolingDown(Items.FIRE_CHARGE)){
             return TypedActionResult.pass(stack);
         }
+        if (item == Items.FIREWORK_ROCKET && !player.isFallFlying()){
+            return TypedActionResult.pass(stack);
+        }
+
 
         int infinityLevel = getEnchantmentLevel(player, hand, world, Enchantments.INFINITY);
         if (infinityLevel <= 0) {
@@ -73,13 +77,10 @@ public class ThrowItemEvent implements UseItemCallback {
         int originalCount = stack.getCount();
 
         world.getServer().execute(() -> {
-            // 检查玩家手中是否仍然是药水且数量减少了
+            // 检查玩家手中是否仍然是item且数量减少了
             ItemStack currentStack = player.getStackInHand(hand);
 
             if (currentStack.getItem() == originalStack.getItem()) {
-                System.out.println(currentStack.getCount());
-                System.out.println(originalCount);
-                System.out.println("asda");
                 // 直接增加当前堆栈的数量，而不是插入新堆栈
                 currentStack.increment(1);
                 player.getInventory().markDirty();

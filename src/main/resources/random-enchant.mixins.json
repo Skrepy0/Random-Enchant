@@ -6,6 +6,7 @@
     "BlockMixin",
     "ExampleMixin",
     "FireChargeItemMixin",
+    "FireworkRocketItemMixin",
     "ItemMixin",
     "LivingEntityMixin"
   ],

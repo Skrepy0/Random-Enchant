@@ -80,6 +80,7 @@ public class ModItemGroup {
                         entries.add(Items.ENCHANTED_GOLDEN_APPLE);
                         entries.add(Items.TOTEM_OF_UNDYING);
                         entries.add(Items.DIAMOND_SHOVEL);
+                        entries.add(Items.FIREWORK_ROCKET);
                         entries.add(ModItems.PEARL_STICK);
                         entries.add(ModItems.PEARL_SPEAR);
                         entries.add(ModItems.CURRY_STICK);
