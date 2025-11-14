@@ -2,13 +2,11 @@ package com.random_enchant.item.custom.tool;
 
 import com.random_enchant.RandomEnchant;
 import com.random_enchant.enchantment.ModEnchantments;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
-import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -49,11 +47,11 @@ import java.util.List;
 import java.util.Random;
 
 public class PearlSpear extends Item {
+    private int coolDownTime = 200;
     public PearlSpear(Settings settings) {
         super(settings.maxDamage(128).rarity(Rarity.EPIC).maxCount(1).component(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)
                 .attributeModifiers(createAttributeModifiers()));
     }
-
     private static AttributeModifiersComponent createAttributeModifiers() {
         return AttributeModifiersComponent.builder()
                 // 剑的基础属性 - 攻击伤害
@@ -106,7 +104,6 @@ public class PearlSpear extends Item {
         }
         return 0;
     }
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
@@ -119,7 +116,8 @@ public class PearlSpear extends Item {
         }
         world.playSound(null, BlockPos.ofFloored(user.getPos()), SoundEvents.ITEM_TOTEM_USE,
                 SoundCategory.AMBIENT, 0.2F, 1.4F);
-        user.getItemCooldownManager().set(this, 200);
+        int quickCharge = getEnchantmentLevel(stack,world,Enchantments.QUICK_CHARGE);
+        user.getItemCooldownManager().set(this, getRealCoolDownTime(quickCharge));
         showParticleEffect(world, user);
         return TypedActionResult.success(stack);
     }
@@ -152,7 +150,8 @@ public class PearlSpear extends Item {
         }
         world.playSound(null, BlockPos.ofFloored(user.getPos()), SoundEvents.ITEM_TOTEM_USE,
                 SoundCategory.AMBIENT, 0.2F, 1.0F);
-        user.getItemCooldownManager().set(this, 200);
+        int quickCharge = getEnchantmentLevel(stack,world,Enchantments.QUICK_CHARGE);
+        user.getItemCooldownManager().set(this, getRealCoolDownTime(quickCharge));
         if (!user.getAbilities().creativeMode) {
             int unbreakingLevel = getEnchantmentLevel(stack,world,Enchantments.UNBREAKING);
             stack.damage(getItemDamage(unbreakingLevel), user, LivingEntity.getSlotForHand(user.getActiveHand()));
@@ -174,6 +173,13 @@ public class PearlSpear extends Item {
                 0.03                      // 基础速度（会被方向向量缩放）
         );
         return true;
+    }
+    private int getRealCoolDownTime(int quickCharge){
+        double realCoolDownTime = coolDownTime;
+        if (quickCharge > 0){
+            realCoolDownTime = ((double)11451/(quickCharge+4.6)-20)*0.08;
+        }
+        return (int)realCoolDownTime;
     }
     private BlockPos findGroundPosition(ServerWorld world, BlockPos pos) {
         // 从高空开始向下寻找第一个非空气方块
@@ -364,7 +370,7 @@ public class PearlSpear extends Item {
                         0.01                        // 基础速度（会被方向向量缩放）
                 );
                 serverWorld.spawnParticles(
-                        ParticleTypes.FLAME,
+                        ParticleTypes.FLASH,
                         x, y + 0.3, z,                    // 粒子位置
                         10,                          // 粒子数量
                         direction1.x * speed,        // X方向速度
@@ -457,9 +463,6 @@ public class PearlSpear extends Item {
             tooltip.add(Text.translatable("item.tooltip.random-enchant.for_shift_tooltip"));
         }
     }
-
-
-    // 在物品使用时动态添加附魔
     @Override
     public ItemStack getDefaultStack() {
         ItemStack stack = super.getDefaultStack();
@@ -483,7 +486,7 @@ public class PearlSpear extends Item {
     }
 
     private static void spawnBee(World world, Entity target, int count, LivingEntity livingEntity) {
-        if (target == null || world.isClient) return;
+        if (target == null || world.isClient || livingEntity == null) return;
 
         for (int i = 0; i < Math.min(count, 20); i++) {
             BeeEntity bee = new BeeEntity(EntityType.BEE, world) {
@@ -503,7 +506,7 @@ public class PearlSpear extends Item {
             if (target instanceof LivingEntity) {
                 bee.setTarget((LivingEntity) target);
             }
-
+            showBeeParticleEffect(world,livingEntity);
             world.spawnEntity(bee);
             bee.setCustomName(Text.translatable("entity.minecraft.bee.spawn_name"));
             bee.addStatusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST,11451419,count*2));
@@ -511,6 +514,54 @@ public class PearlSpear extends Item {
             bee.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,11451419,(int)(count*0.2)));
             bee.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION,11451419,count*2));
             bee.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED,11451419,count*2));
+        }
+    }
+    private static void showBeeParticleEffect(World world,LivingEntity target){
+        Vec3d pos =  target.getPos();
+        final int PARTICLE_COUNT = 20;
+        final double RADIUS = 2.0;
+        for (int i = 0; i < PARTICLE_COUNT; i++) {
+            double angle = 2 * Math.PI * i / PARTICLE_COUNT;
+            double x = target.getX() + RADIUS * Math.sin(angle);
+            double y = target.getY();
+            double z = target.getZ() + RADIUS * Math.cos(angle);
+            // 在服务器端发送粒子数据包给所有客户端
+            if (!world.isClient) {
+                ServerWorld serverWorld = (ServerWorld) world;
+                double speed = 0.08; // 调整速度值，10太快了
+
+                // 计算从中心指向粒子位置的方向（向外）
+                Vec3d direction1 = new Vec3d(x - pos.x, y - pos.y, z - pos.z).normalize();
+
+                // 使用 spawnParticles 方法，通过速度参数设置粒子运动方向
+                serverWorld.spawnParticles(
+                        ParticleTypes.FLASH,
+                        x, y + 0.3, z,                    // 粒子位置
+                        10,                          // 粒子数量
+                        direction1.x * speed,        // X方向速度
+                        direction1.y * speed,        // Y方向速度
+                        direction1.z * speed,        // Z方向速度
+                        0.01                        // 基础速度（会被方向向量缩放）
+                );
+                serverWorld.spawnParticles(
+                        ParticleTypes.ENCHANTED_HIT,
+                        x, y + 0.3, z,                    // 粒子位置
+                        10,                          // 粒子数量
+                        direction1.x * speed,        // X方向速度
+                        direction1.y * speed,        // Y方向速度
+                        direction1.z * speed,        // Z方向速度
+                        0.01                        // 基础速度（会被方向向量缩放）
+                );
+                serverWorld.spawnParticles(
+                        ParticleTypes.ENCHANT,
+                        x, y + 0.3, z,                    // 粒子位置
+                        10,                          // 粒子数量
+                        direction1.x * speed * 1.1,        // X方向速度
+                        direction1.y * speed * 1.1,        // Y方向速度
+                        direction1.z * speed * 1.1,        // Z方向速度
+                        0.03                        // 基础速度（会被方向向量缩放）
+                );
+            }
         }
     }
 }
