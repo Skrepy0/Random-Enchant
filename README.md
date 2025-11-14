@@ -6,11 +6,11 @@ Additionally, we’ve introduced several exciting **new items** to enhance your 
 Make sure to install `fabricloader` (version at least `0.17.2`) and `fabric-api` first.
 Make sure your Minecraft version is `1.21.1`.
 # How to Play
-- Use the command /random_enchant description to view detailed information.
-- Use the command /random_enchant isRandomEnchant true to enable the Random Enchant feature.
+- Use the command `/random_enchant description` to view detailed information.
+- Use the command `/random_enchant isRandomEnchant true` to enable the Random Enchant feature.
 
-# credits
-Mahiru  、  `Ragecraft IV`
+# Credits
+Mahirukksk  、  `Ragecraft IV`
 
 >Attention:
 The texture part of this mod is derived from `Ragecraft IV`.
