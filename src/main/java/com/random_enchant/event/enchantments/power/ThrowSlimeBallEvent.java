@@ -40,10 +40,12 @@ public class ThrowSlimeBallEvent implements UseItemCallback {
         if (powerEnchantLevel <= 0){
             return TypedActionResult.pass(stack);
         }
-        SlimeBallEntity slimeBallEntity = new SlimeBallEntity(world, player, stack);
+        SlimeBallEntity slimeBallEntity = new SlimeBallEntity(world, player, stack,powerEnchantLevel);
         slimeBallEntity.setVelocity(player, player.getPitch(), player.getYaw(), 0.0F, 1.5F, 1.0F);
         world.playSound(null,player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.AMBIENT,1.0F,1.0F);
         slimeBallEntity.setItemStack(stack);
+        slimeBallEntity.setOwner(player);
+        slimeBallEntity.setItem(stack);
         world.spawnEntity(slimeBallEntity);
         if (!player.getAbilities().creativeMode) {
             ItemStack newItemStack = stack.copy();

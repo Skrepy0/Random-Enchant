@@ -6,11 +6,14 @@ import com.random_enchant.enchantment.ModEnchantmentTags;
 import com.random_enchant.entity.ModEntities;
 import com.random_enchant.event.AttackMobEvent;
 import com.random_enchant.event.ModEvents;
+import com.random_enchant.event.dispenser.SlimeBallDispenserBehavior;
 import com.random_enchant.item.ModItemGroup;
 import com.random_enchant.item.ModItemModelProperties;
 import com.random_enchant.item.ModItemTags;
 import com.random_enchant.item.ModItems;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.item.Items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,5 +45,7 @@ public class RandomEnchant implements ModInitializer {
         AttackMobEvent.registerAttackMobEvents();
 
         ModItemModelProperties.registerModelProperties();
+
+        DispenserBlock.registerBehavior(Items.SLIME_BALL, new SlimeBallDispenserBehavior());
     }
 }
