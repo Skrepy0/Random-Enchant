@@ -25,21 +25,15 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Random;
 
+import static com.random_enchant.enchantment.ModEnchantHelper.getEnchantmentLevel;
+
 public class ShovelBlockEvent implements UseBlockCallback {
     public int UnbreakingLevel;
     public void registerEvent() {
         UseBlockCallback.EVENT.register(this);
     }
 
-    private static int getEnchantmentLevel(PlayerEntity player, Hand hand, World world, RegistryKey<Enchantment> enchantment) {
-        ItemStack stack = player.getStackInHand(hand);
-        RegistryEntry<Enchantment> enchantmentEntry =
-                world.getRegistryManager().get(RegistryKeys.ENCHANTMENT)
-                        .getEntry(enchantment).orElse(null);
-        int enchantmentLevel = enchantmentEntry != null ?
-                EnchantmentHelper.getLevel(enchantmentEntry, stack) : 0;
-        return enchantmentLevel;
-    }
+
 
     @Override
     public ActionResult interact(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {

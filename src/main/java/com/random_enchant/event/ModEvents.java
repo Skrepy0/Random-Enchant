@@ -1,5 +1,6 @@
 package com.random_enchant.event;
 
+import com.random_enchant.event.enchantments.frost_walker.ArrowEntityFlyEvent;
 import com.random_enchant.event.enchantments.infinity.PotionThrowEvent;
 import com.random_enchant.event.enchantments.infinity.ThrowItemEvent;
 import com.random_enchant.event.enchantments.power.ShovelBlockEvent;
@@ -15,5 +16,6 @@ public class ModEvents {
         new ThrowFireBallEvent().registerEvent();
         new ShovelEntityEvent().registerEvent();
         new ThrowSlimeBallEvent().registerEvent();
+        ArrowEntityFlyEvent.register();
     }
 }

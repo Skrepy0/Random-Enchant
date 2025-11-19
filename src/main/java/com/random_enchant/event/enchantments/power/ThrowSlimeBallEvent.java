@@ -1,6 +1,7 @@
 package com.random_enchant.event.enchantments.power;
 
 import com.random_enchant.entity.SlimeBallEntity;
+import com.random_enchant.sound.ModSoundEvents;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -17,16 +18,10 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
+import static com.random_enchant.enchantment.ModEnchantHelper.getEnchantmentLevel;
+
 public class ThrowSlimeBallEvent implements UseItemCallback {
     public void registerEvent(){UseItemCallback.EVENT.register(this);}
-    private static int getEnchantmentLevel(ItemStack stack, World world, RegistryKey<Enchantment> enchantment) {
-
-        RegistryEntry<Enchantment> enchantmentEntry =
-                world.getRegistryManager().get(RegistryKeys.ENCHANTMENT)
-                        .getEntry(enchantment).orElse(null);
-        return enchantmentEntry != null ?
-                EnchantmentHelper.getLevel(enchantmentEntry, stack) : 0;
-    }
     @Override
     public TypedActionResult<ItemStack> interact(PlayerEntity player, World world, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
@@ -42,7 +37,7 @@ public class ThrowSlimeBallEvent implements UseItemCallback {
         }
         SlimeBallEntity slimeBallEntity = new SlimeBallEntity(world, player, stack,powerEnchantLevel);
         slimeBallEntity.setVelocity(player, player.getPitch(), player.getYaw(), 0.0F, 1.5F, 1.0F);
-        world.playSound(null,player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.AMBIENT,1.0F,1.0F);
+        world.playSound(null,player.getX(), player.getY(), player.getZ(), ModSoundEvents.ENTITY_SLIMEBALL_THROW, SoundCategory.AMBIENT,1.0F,1.0F);
         slimeBallEntity.setItemStack(stack);
         slimeBallEntity.setOwner(player);
         slimeBallEntity.setItem(stack);

@@ -17,5 +17,12 @@ public class ModEntities {
                         .trackRangeBlocks(64).trackedUpdateRate(10)
                         .build()
         );
+//        FrozenArrowEntity.TYPE = Registry.register(
+//                Registries.ENTITY_TYPE,
+//                Identifier.of(RandomEnchant.MOD_ID, "frozen_arrow"),
+//                FabricEntityTypeBuilder.<FrozenArrowEntity>create(SpawnGroup.MISC, FrozenArrowEntity::new)
+//                        .trackRangeBlocks(64).trackedUpdateRate(10)
+//                        .build()
+//        );
     }
 }

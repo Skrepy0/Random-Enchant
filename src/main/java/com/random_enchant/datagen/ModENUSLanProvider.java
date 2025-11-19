@@ -56,6 +56,8 @@ public class ModENUSLanProvider extends FabricLanguageProvider{
         translationBuilder.add("enchantment.random-enchant.fury_of_fly","§aFury Of Fly");
         translationBuilder.add("entity.minecraft.bee.spawn_name","§aFly");
 
+        translationBuilder.add("entity.slimeball.throw","SlimeBall flies");
+
         translationBuilder.add("item.tooltip.random-enchant.for_shift_tooltip","Press §6[SHIFT]§r show detail information");
         translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_1","§bLeft-click to attack the entity and teleport, right-click to teleport§r");
         translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_2","§bEntities in the teleportation path take 8 base damage(real damage is related to the level of §a[Sweep Edge]§b)§r");

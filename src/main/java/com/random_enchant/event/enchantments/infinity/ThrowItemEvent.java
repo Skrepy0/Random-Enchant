@@ -15,20 +15,14 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
+import static com.random_enchant.enchantment.ModEnchantHelper.getEnchantmentLevel;
+
 public class ThrowItemEvent implements UseItemCallback {
     public void registerEvents() {
         UseItemCallback.EVENT.register(this);
     }
 
-    private static int getEnchantmentLevel(PlayerEntity player, Hand hand, World world, RegistryKey<Enchantment> enchantment) {
-        ItemStack stack = player.getStackInHand(hand);
-        RegistryEntry<Enchantment> enchantmentEntry =
-                world.getRegistryManager().get(RegistryKeys.ENCHANTMENT)
-                        .getEntry(enchantment).orElse(null);
-        int enchantmentLevel = enchantmentEntry != null ?
-                EnchantmentHelper.getLevel(enchantmentEntry, stack) : 0;
-        return enchantmentLevel;
-    }
+
 
     @Override
     public TypedActionResult<ItemStack> interact(PlayerEntity player, World world, Hand hand) {

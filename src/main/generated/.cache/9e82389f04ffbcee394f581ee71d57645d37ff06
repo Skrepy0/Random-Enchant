@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-14T20:06:45.7031909	Random Enchant/Tags for minecraft:item
+// 1.21.1	2025-11-19T23:03:54.559807	Random Enchant/Tags for minecraft:item
 7edb119812d4d21679d4c7e3d7d0b0759929d754 data\minecraft\tags\item\enchantable\durability.json
 bb05dcb8cb1ed63a2e8668e393102cd40db358d3 data\random-enchant\tags\item\quick_charge_available.json
 06eef9b46a299283d150553d0f5d00f2c2b71dd6 data\random-enchant\tags\item\wind_burst_available.json
@@ -6,4 +6,5 @@ bb05dcb8cb1ed63a2e8668e393102cd40db358d3 data\random-enchant\tags\item\quick_cha
 7ffa1bbd059314f63d7373bd6d71326c8f96840f data\minecraft\tags\item\enchantable\weapon.json
 2d4b55ff2669c587b401c3767543d095b25928ee data\random-enchant\tags\item\channeling_available.json
 7ffa1bbd059314f63d7373bd6d71326c8f96840f data\minecraft\tags\item\enchantable\sword.json
+9e72b72073f5d0536dd2a5abc4b2c56a9182eec5 data\random-enchant\tags\item\frost_walker_available.json
 7ffa1bbd059314f63d7373bd6d71326c8f96840f data\minecraft\tags\item\swords.json

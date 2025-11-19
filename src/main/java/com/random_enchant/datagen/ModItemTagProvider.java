@@ -4,6 +4,7 @@ import com.random_enchant.item.ModItemTags;
 import com.random_enchant.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
@@ -38,6 +39,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PEARL_SPEAR);
         getOrCreateTagBuilder(ItemTags.WEAPON_ENCHANTABLE)
                 .add(ModItems.PEARL_SPEAR);
+        getOrCreateTagBuilder(ModItemTags.FROST_WALKER)
+                .add(Items.ARROW)
+                .forceAddTag(ItemTags.FOOT_ARMOR_ENCHANTABLE);
 
     }
 }

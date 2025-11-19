@@ -55,6 +55,7 @@ public class ModZHCNLanProvider extends FabricLanguageProvider {
         translationBuilder.add("enchantment.random-enchant.fury_of_fly","§aFly之怒");
         translationBuilder.add("entity.minecraft.bee.spawn_name","§aFly");
 
+        translationBuilder.add("entity.slimeball.throw","粘液球：飞出");
 
         translationBuilder.add("item.tooltip.random-enchant.for_shift_tooltip", "按下§6[SHIFT]§r查看详细信息");
         translationBuilder.add("item.tooltip.random-enchant.pearl_spear.detail_description_1", "§b左键攻击实体并瞬移，右键瞬移§r");

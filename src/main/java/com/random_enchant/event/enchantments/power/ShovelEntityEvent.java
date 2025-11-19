@@ -22,6 +22,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
+import static com.random_enchant.enchantment.ModEnchantHelper.getEnchantmentLevel;
+
 public class ShovelEntityEvent implements UseEntityCallback{
     public void registerEvent(){
         UseEntityCallback.EVENT.register(this);
@@ -48,15 +50,7 @@ public class ShovelEntityEvent implements UseEntityCallback{
         player.getItemCooldownManager().set(stack.getItem(),10);
         return ActionResult.SUCCESS;
     }
-    private static int getEnchantmentLevel(ItemStack stack, World world, RegistryKey<Enchantment> enchantment) {
 
-        RegistryEntry<Enchantment> enchantmentEntry =
-                world.getRegistryManager().get(RegistryKeys.ENCHANTMENT)
-                        .getEntry(enchantment).orElse(null);
-        int enchantmentLevel = enchantmentEntry != null ?
-                EnchantmentHelper.getLevel(enchantmentEntry, stack) : 0;
-        return enchantmentLevel;
-    }
     private static void setShovelDamage(ItemStack stack,PlayerEntity player,int UnbreakingLevel){
         if (!player.getAbilities().creativeMode) {
             // 减少耐久度

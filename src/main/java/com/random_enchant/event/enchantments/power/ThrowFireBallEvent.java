@@ -26,17 +26,11 @@ import net.minecraft.world.World;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static com.random_enchant.enchantment.ModEnchantHelper.getEnchantmentLevel;
+
 public class ThrowFireBallEvent implements UseItemCallback {
     public void registerEvent(){UseItemCallback.EVENT.register(this);}
-    private static int getEnchantmentLevel(ItemStack stack, World world, RegistryKey<Enchantment> enchantment) {
 
-        RegistryEntry<Enchantment> enchantmentEntry =
-                world.getRegistryManager().get(RegistryKeys.ENCHANTMENT)
-                        .getEntry(enchantment).orElse(null);
-        int enchantmentLevel = enchantmentEntry != null ?
-                EnchantmentHelper.getLevel(enchantmentEntry, stack) : 0;
-        return enchantmentLevel;
-    }
     @Override
     public TypedActionResult<ItemStack> interact(PlayerEntity player, World world, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);

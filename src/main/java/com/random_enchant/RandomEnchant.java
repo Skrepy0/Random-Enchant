@@ -11,6 +11,7 @@ import com.random_enchant.item.ModItemGroup;
 import com.random_enchant.item.ModItemModelProperties;
 import com.random_enchant.item.ModItemTags;
 import com.random_enchant.item.ModItems;
+import com.random_enchant.sound.ModSoundEvents;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.item.Items;
@@ -43,6 +44,7 @@ public class RandomEnchant implements ModInitializer {
         ModEnchantmentTags.registerModItemTags();
         ModItemGroup.registerModGroups();
         AttackMobEvent.registerAttackMobEvents();
+        ModSoundEvents.registerModSoundEvents();
 
         ModItemModelProperties.registerModelProperties();
 

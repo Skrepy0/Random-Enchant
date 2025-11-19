@@ -24,5 +24,6 @@ public class ModEnchantmentTagProvider extends EnchantmentTagProvider {
                 .add(ModEnchantments.FURY_OF_FLY);
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE)
                 .add(ModEnchantments.FURY_OF_FLY);
+
     }
 }

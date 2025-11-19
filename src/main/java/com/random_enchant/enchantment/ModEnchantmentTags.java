@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 public class ModEnchantmentTags {
     public static final TagKey<Enchantment> FURY_OF_FLY= of("fury_of_fly");
 
+
     public static TagKey<Enchantment> of(String id){
         return TagKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(RandomEnchant.MOD_ID,id));
     }
