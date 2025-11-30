@@ -15,7 +15,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -96,9 +95,9 @@ public class ArrowEntityFlyEvent {
                         // 放宽条件检查
                         if (isValidIcePositionLoose(world, icePos)) {
                             Block block = null;
-                            if (frostWalkerLevel <= 3 )block = Blocks.FROSTED_ICE;
-                            else if (frostWalkerLevel< 10)block = Blocks.ICE;
-                            else if (frostWalkerLevel< 20)block = Blocks.PACKED_ICE;
+                            if (frostWalkerLevel <= 3) block = Blocks.FROSTED_ICE;
+                            else if (frostWalkerLevel < 10) block = Blocks.ICE;
+                            else if (frostWalkerLevel < 20) block = Blocks.PACKED_ICE;
                             else block = Blocks.BLUE_ICE;
 
 
